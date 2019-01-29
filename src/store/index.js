@@ -1,8 +1,8 @@
-import topics from './topics.module'
+import topicsModule from './topics.module'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 export default {
-  modules: { topics },
+  modules: { topicsModule },
   strict: debug
 }

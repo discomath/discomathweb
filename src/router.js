@@ -1,12 +1,28 @@
-import Home from './views/Home.vue'
+import Topics from './views/Topics.vue'
 import Divisibility from './views/applications/Divisibility.vue'
+
+export const TOPICS = [
+  {
+    name: 'Number Theory',
+    applications: [
+      {
+        name: 'Divisibility',
+        link: 'divisibility'
+      }
+    ]
+  }
+]
 
 export default {
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: '/topics'
+    },
+    {
+      path: '/topics',
+      name: 'topics',
+      component: Topics
     },
     {
       path: '/applications/divisibility',

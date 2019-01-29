@@ -1,41 +1,19 @@
-import discreteMathApplicationsApi from '@/services/dmapplications-api'
+import { TOPICS } from '@/router'
 
 const state = {
-  topics: {
-
-  },
-
-  applications: {
-
-  }
+  topics: TOPICS
 }
 
 const getters = {
-  getTopics: state => state.topics,
-  getApplications: state => state.applications
+  getTopics: state => state.topics
 }
 
 const actions = {
-  async fetchTopics ({ commit }) {
-    let data = await discreteMathApplicationsApi.getTopics()
 
-    data.forEach(topic => {
-      commit('SET_TOPICS_DATA', topic)
-      topic.subTopics.forEach(subTopic => {
-        commit('SET_APPLICATION', subTopic)
-      })
-    })
-  }
 }
 
 const mutations = {
-  SET_TOPICS_DATA (state, topic) {
-    state.topics[topic.id] = topic
-  },
 
-  SET_APPLICATION (state, application) {
-    state.applications[application.id] = application
-  }
 }
 
 export default {

@@ -1,12 +1,23 @@
 <template>
-  <div id="header">
-    <nav class="purple">
+  <div id="navbar">
+    <nav class="purple darken-2">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Discrete Math Applications</a>
+        <router-link class="brand-logo center" to="/">Discrete Math Applications</router-link>
       </div>
     </nav>
   </div>
 </template>
 
-<style>
+<style scoped>
+@media screen and (max-width: 697px) {
+  .brand-logo {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 364px) {
+  .brand-logo {
+    font-size: .9rem;
+  }
+}
 </style>
