@@ -1,26 +1,33 @@
 <template>
-  <div class="container" id="home">
+  <div id="home">
+    <h2 class="center">Topics</h2>
     <div class="row">
-      <div class="col s12 m6">
-        <TopicCard topic="Number Theory" :subTopics="['Divisibility']" />
+      <div class="col s12 m6" v-for="topic in topics" :key="topic.name">
+        <TopicCard :topic="topic.name" :subTopics="topic.applications" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 import TopicCard from '@/components/TopicCard'
 
 export default {
   components: { TopicCard },
-
-  computed: mapGetters('topics', ['getTopics']),
-
-  methods: mapActions('topics', ['fetchTopics']),
-
-  async created () {
-    this.fetchTopics()
+  data () {
+    return {
+      topics: [
+        {
+          name: 'Number Theory',
+          applications: [
+            {
+              name: 'Divisibility',
+              link: 'divisibility'
+            }
+          ]
+        }
+      ]
+    }
   }
 }
 </script>

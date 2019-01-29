@@ -1,10 +1,10 @@
 <template>
-  <div class="card">
+  <div class="card topic-card">
     <div class="card-content">
       <span class="card-title">{{ topic }}</span>
       <ul>
-        <li v-for="subTopic in subTopics" :key="subTopic.id">
-          <a href="#">{{ subTopic }}</a>
+        <li v-for="subTopic in subTopics" :key="subTopic.name">
+          <router-link :to="{ path: `applications/${subTopic.link}`}">{{ subTopic.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -19,3 +19,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.topic-card .card-title {
+  text-transform: capitalize;
+}
+</style>
