@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container" id="home">
+    <div class="row">
+      <div class="col s12 m6">
+        <TopicCard topic="Number Theory" :subTopics="['Divisibility']" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapActions, mapGetters } from 'vuex'
+import TopicCard from '@/components/TopicCard'
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  components: { TopicCard },
+
+  computed: mapGetters('topics', ['getTopics']),
+
+  methods: mapActions('topics', ['fetchTopics']),
+
+  async created () {
+    this.fetchTopics()
   }
 }
 </script>
