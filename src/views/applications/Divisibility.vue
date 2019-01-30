@@ -51,6 +51,8 @@
             <option>2</option>
             <option>3</option>
             <option>4</option>
+            <option>5</option>
+            <option>6</option>
           </select>
         </div>
 
@@ -95,6 +97,8 @@ import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
+const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6'])
+
 export default {
   components: {
     ComputationalResult,
@@ -130,7 +134,7 @@ export default {
     },
 
     divisorIsValid: function () {
-      return this.divisor && (this.divisor === '2' || this.divisor === '3' || this.divisor === '4')
+      return this.divisor && (VALID_DIVISORS.has(this.divisor))
     },
 
     numberIsValid: function () {
