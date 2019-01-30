@@ -1,34 +1,35 @@
-# dmapplications-client
+# DiscoMath Web Application
 
-## Project setup
+DiscoMath is a tool for students to interact with [topics in DIScrete and COmbinatorics](https://en.wikipedia.org/wiki/Discrete_mathematics#Topics_in_discrete_mathematics).
+
+> https://discomath.github.io/discomathweb
+
+## Contributions
+
+Contributions are encouraged, particularly from other students.
+All contributions should be made as a pull request to the `dev` branch.
+Please ensure that tests pass, including lint checks.
+
+## Development
+
+To get up and going, run the following.
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
+This will serve the application from `localhost:8081` with hot reloading enabled.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Linting and Testing
 
-### Run your tests
+The following will run the `lint` service with the `--fix` switch, as well as unit tests.
 ```
 npm run test
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Acknowledgements
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+<a href="http://materializecss.com/">
+  <img src="http://materializecss.com/res/materialize.svg" width="150">
+</a>
+<a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
+  <img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo">
+</a>
