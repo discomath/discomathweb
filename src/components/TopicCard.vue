@@ -20,8 +20,8 @@ export default {
 }
 </script>
 
-<style>
-.topic-card .card-title {
-  text-transform: capitalize;
-}
+<style scoped>
+  .topic-card .card-title {
+    text-transform: capitalize;
+  }
 </style>

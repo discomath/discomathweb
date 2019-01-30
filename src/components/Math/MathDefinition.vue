@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="flow-text">
     <h4>Definition</h4>
-    <slot>
-    </slot>
+    <blockquote>
+      <slot>
+      </slot>
+    </blockquote>
   </div>
 </template>
 
