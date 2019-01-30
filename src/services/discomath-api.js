@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://dmapplications.herokuapp.com/api'
+const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://dmapplications.herokuapp.com/api' : 'http://localhost:8080/api'
 
 export default {
   /**

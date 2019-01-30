@@ -1,4 +1,4 @@
-import discreteMathApplicationsApi from '@/services/dmapplications-api'
+import discreteMathApplicationsApi from '@/services/discomath-api'
 
 const state = {
   result: {}
