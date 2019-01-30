@@ -1,6 +1,5 @@
 /**
- * Configuration for Vue Router.  Exports routed information for use
- * in Vuex store, and Vue components.
+ * Vuex Store module dealing with navigation state.
  *
  * discomathweb is a web service for studying topics in discrete math.
  * Copyright (C) 2019  discomath
@@ -18,42 +17,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
  */
-import Topics from './views/Topics.vue'
-import Divisibility from './views/applications/Divisibility.vue'
+const state = {
+  drawer: false
+}
 
-/**
- * Routed paths in a format applicable to components and Vuex store.
- */
-export const TOPICS = [
-  {
-    name: 'Number Theory',
-    applications: [
-      {
-        name: 'Divisibility',
-        link: 'divisibility'
-      }
-    ]
+const getters = {
+  /**
+   * @returns {boolean} True if the navigational drawer is open
+   */
+  drawerIsOpen: state => state.drawer
+}
+
+const actions = {
+  /**
+   * Toggles the boolean state of the navigational drawer
+   */
+  toggleDrawer ({ commit }) {
+    commit('TOGGLE_DRAWER')
   }
-]
+}
 
-/**
- * Vue Router configuration
- */
+const mutations = {
+  TOGGLE_DRAWER: state => {
+    state.drawer = !state.drawer
+  }
+}
+
 export default {
-  routes: [
-    {
-      path: '/',
-      redirect: '/topics'
-    },
-    {
-      path: '/topics',
-      name: 'topics',
-      component: Topics
-    },
-    {
-      path: '/applications/divisibility',
-      name: 'divisibility',
-      component: Divisibility
-    }
-  ]
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
 }

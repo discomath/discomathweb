@@ -1,3 +1,22 @@
+<!--
+  Routed View containing Divisibility Test.
+
+  discomathweb is a web service for studying topics in discrete math.
+  Copyright (C) 2019  discomath
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
+ -->
 <template>
   <Section elementId="divisibility">
 
@@ -5,7 +24,7 @@
     <SectionIntro title="Divisibility">
       <MathDefinition>
         <p>
-          <code>a &#8739; b if &exist;k</code> where <code>ak &equals; b &nbsp; a,b,k &isin; Z</code>
+          <code>a&#8739;b &rArr; &exist;k</code> where <code>a&sdot;k &equals; b &nbsp; a,b,k &isin; Z</code>
         </p>
         <p class="grey-text">
           An integer <code class="black-text">a</code> divides another integer <code class="black-text">b</code> if it can be multiplied by some integer <code class="black-text">k</code> to produce <code class="black-text">b</code>.
@@ -13,6 +32,7 @@
       </MathDefinition>
     </SectionIntro>
 
+    <!-- Introduces The Tool -->
     <div>
       <h4>Divisibility Tool</h4>
       <p class="flow-text">
@@ -20,7 +40,10 @@
       </p>
     </div>
 
+    <!-- Form and  Result -->
     <div class="container">
+
+      <!-- Select, Input and Error Message -->
       <div class="row">
         <div class="col s12 m6">
           <select v-model="divisor">
@@ -32,7 +55,7 @@
         </div>
 
         <div class="col s12 m6">
-          <input type="text" v-model="number" placeholder="enter a natural number" minlength="1" maxlength="15">
+          <input type="text" v-model="number" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
 
         <div class="col s12">
@@ -40,7 +63,10 @@
         </div>
       </div>
 
+      <!-- Computation & Result -->
       <div class="row">
+
+        <!-- Only show computation if result is present in store -->
         <div v-if="getResult.result">
           <div class="col s12" v-for="step in getResult.computationalSteps" :key="step.number">
             <ComputationalStep :message="step.message" :equation="step.equation" :step="step.number" />
@@ -49,11 +75,14 @@
             <ComputationalResult :result="getResult.result" />
           </div>
         </div>
+
+        <!-- Form Action button -->
         <div class="center">
           <a @click="computeDivisionTest" class="btn pink lighten-1">Compute</a>
         </div>
       </div>
-    </div>
+
+    </div> <!-- END FORM -->
 
   </Section>
 </template>
@@ -63,8 +92,8 @@ import { mapActions, mapGetters } from 'vuex'
 import ComputationalResult from '@/components/Math/ComputationalResult'
 import ComputationalStep from '@/components/Math/ComputationalStep'
 import MathDefinition from '@/components/Math/MathDefinition'
-import Section from '@/components/Section'
-import SectionIntro from '@/components/SectionIntro'
+import Section from '@/components/Layout/Section'
+import SectionIntro from '@/components/Layout/SectionIntro'
 
 export default {
   components: {
@@ -77,9 +106,9 @@ export default {
 
   data () {
     return {
-      divisor: '',
-      number: '',
-      error: null
+      divisor: '', // bound to the <select>
+      number: '', // bound to the <input>
+      error: null // whether or not to display an error message
     }
   },
 
@@ -87,32 +116,44 @@ export default {
 
   methods: {
     ...mapActions('resultModule', ['fetchDivisibilityTest']),
+
+    /**
+     * Fetches result from API if data is valid
+     */
     computeDivisionTest: function (e) {
-      if (this.divisor && (this.number > 0)) {
+      if (this.divisorIsValid() && this.numberIsValid()) {
         this.fetchDivisibilityTest({ divisor: this.divisor, number: this.number })
         this.error = false
       } else {
         this.error = true
       }
+    },
+
+    divisorIsValid: function () {
+      return this.divisor && (this.divisor === '2' || this.divisor === '3' || this.divisor === '4')
+    },
+
+    numberIsValid: function () {
+      return !isNaN(this.number) && this.number > 0
     }
+
   }
 }
 </script>
 
 <style scoped>
-  section {
-    padding: 1rem 0;
-  }
-
+  /* fixed width select contains divisor */
   select {
     display: block !important;
     width: 250px;
   }
 
+  /* fixed width input contains typed number */
   input[type=text] {
-    max-width: 250px;
+    width: 250px;
   }
 
+  /* form 'comptute' button */
   a.btn {
     width: 100px;
   }

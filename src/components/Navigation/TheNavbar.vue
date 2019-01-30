@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 <!--
-  HTML template for Vue injection.
+  The application's <nav> component.
 
   discomathweb is a web service for studying topics in discrete math.
   Copyright (C) 2019  discomath
@@ -18,24 +16,30 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
--->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Favicon & Title -->
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>DiscoMath</title>
-</head>
+ -->
+<template>
+  <div id="navbar">
 
-<body>
-    <noscript>
-        <strong>Please enable JavaScript to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-</body>
+    <nav class="purple darken-2">
+      <div class="nav-wrapper">
+        <!-- Hamburger -->
+        <a @click="toggleDrawer" href="#" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        <!-- Title -->
+        <router-link class="brand-logo center" to="/">{{ title }}</router-link>
+      </div>
+    </nav>
 
-</html>
+  </div>
+</template>
+
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  props: {
+    title: String
+  },
+
+  methods: mapActions('navigationModule', ['toggleDrawer'])
+}
+</script>

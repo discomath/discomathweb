@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 <!--
-  HTML template for Vue injection.
+  Wraps a <section>. Intended use as root element of each routed view (src/views).
 
   discomathweb is a web service for studying topics in discrete math.
   Copyright (C) 2019  discomath
@@ -18,24 +16,30 @@
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
--->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Favicon & Title -->
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>DiscoMath</title>
-</head>
+ -->
+<template>
+  <section :id="elementId">
+    <slot></slot>
+    <router-link to="/" v-if="!hidelink"><i class="inline-icon material-icons">arrow_back</i> Back to Topics</router-link>
+  </section>
+</template>
 
-<body>
-    <noscript>
-        <strong>Please enable JavaScript to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-</body>
+<script>
+export default {
+  props: {
+    elementId: String,
+    hidelink: Boolean
+  }
+}
+</script>
 
-</html>
+<style scoped>
+  section {
+    padding: 1rem;
+  }
+
+  .inline-icon {
+    vertical-align: bottom;
+    font-size: 18px !important;
+  }
+</style>
