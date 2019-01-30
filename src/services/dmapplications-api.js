@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://dmapplications.herokuapp.com/api'
+const BASE_URL = 'https://dmapplications.herokuapp.com/api'
 
 export default {
   /**
