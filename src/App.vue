@@ -47,9 +47,20 @@ import Navbar from '@/components/Navigation/TheNavbar'
 import NavDrawer from '@/components/Navigation/TheNavDrawer'
 import FooterContent from '@/components/TheFooterContent'
 
+const BODY = document.getElementsByTagName('body')[0]
+
 export default {
   components: { FooterContent, Navbar, NavDrawer },
-  computed: mapGetters('navigationModule', ['drawerIsOpen'])
+  computed: mapGetters('navigationModule', ['drawerIsOpen']),
+  watch: {
+    drawerIsOpen: function () {
+      if (this.drawerIsOpen) {
+        BODY.classList.add('no-scroll')
+      } else {
+        BODY.classList.remove('no-scroll')
+      }
+    }
+  }
 }
 </script>
 
