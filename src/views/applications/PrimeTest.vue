@@ -1,5 +1,5 @@
 <!--
-  Routed View containing Divisibility Test.
+  Routed View containing Prime Test.
 
   discomathweb is a web service for studying topics in discrete math.
   Copyright (C) 2019  discomath
@@ -18,25 +18,27 @@
   along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
  -->
 <template>
-  <Section elementId="divisibility">
+  <Section elementId="primeTest">
 
-    <!-- Title and Introduction -->
-    <SectionIntro title="Divisibility">
+  <!-- Title and Introduction -->
+  <SectionIntro title="Prime Numbers">
       <MathDefinition>
         <p>
-          <code>a&#8739;b &rArr; &exist;k</code> where <code>a&sdot;k &equals; b &nbsp; a,b,k &isin; Z</code>
+          <code>n</code> is prime <code>&rArr; &forall;<sub>k&isin;{2..n-1}</sub> k&nmid;n, n&isin;N</code>
         </p>
         <p class="grey-text">
-          An integer <code class="black-text">a</code> divides another integer <code class="black-text">b</code> if it can be multiplied by some integer <code class="black-text">k</code> to produce <code class="black-text">b</code>.
+          A Natural Number (greater than 1) that has only itself and 1 as factors is a <span>Prime Number</span>.
+          Natural Numbers that are not prime are called <span>Composite</span>.
         </p>
       </MathDefinition>
     </SectionIntro>
 
     <!-- Introduces The Tool -->
     <div>
-      <h4>Divisibility Tool</h4>
+      <h4>Prime Test</h4>
       <p class="flow-text">
-        The following tool demonstrates a divisibility test for the selected divisor.
+        The following tool demonstrates a test for primeness.
+        In order to determine primeness, all natural numbers from 2 to the rounded square root of the number being tested are considered.
       </p>
     </div>
 
@@ -46,22 +48,10 @@
       <!-- Select, Input and Error Message -->
       <div class="row">
         <div class="col s12 m6">
-          <select v-model="divisor">
-            <option disabled value="">Select a divisor</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select>
-        </div>
-
-        <div class="col s12 m6">
           <input type="text" v-model="number" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
-
         <div class="col s12">
-          <p class="red-text lighten-1" v-if="error">Choose a divisor from the list above and enter an integer greater than 0.</p>
+          <p class="red-text lighten-1" v-if="error">Enter an number greater than 0.</p>
         </div>
       </div>
 
@@ -80,11 +70,11 @@
 
         <!-- Form Action button -->
         <div class="center">
-          <a @click="computeDivisionTest" class="btn pink lighten-1">Compute</a>
+          <a @click="computePrimeTest" class="btn pink lighten-1">Compute</a>
         </div>
       </div>
 
-    </div> <!-- END FORM -->
+    </div>
 
   </Section>
 </template>
@@ -97,8 +87,6 @@ import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
-const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6'])
-
 export default {
   components: {
     ComputationalResult,
@@ -110,36 +98,32 @@ export default {
 
   data () {
     return {
-      divisor: '', // bound to the <select>
-      number: '', // bound to the <input>
-      error: null // whether or not to display an error message
+      number: '',
+      error: null
     }
   },
 
   computed: mapGetters('resultModule', ['getResult']),
 
   methods: {
-    ...mapActions('resultModule', ['fetchDivisibilityTest', 'flushResult']),
+    ...mapActions('resultModule', ['fetchPrimeTest', 'flushResult']),
 
     /**
      * Fetches result from API if data is valid
      */
-    computeDivisionTest: function (e) {
-      if (this.divisorIsValid() && this.numberIsValid()) {
-        this.fetchDivisibilityTest({ divisor: this.divisor, number: this.number })
+    computePrimeTest: function (e) {
+      if (this.numberIsValid()) {
+        this.fetchPrimeTest({ divisor: this.divisor, number: this.number })
         this.error = false
       } else {
         this.error = true
       }
     },
 
-    divisorIsValid: function () {
-      return this.divisor && (VALID_DIVISORS.has(this.divisor))
-    },
-
     numberIsValid: function () {
       return !isNaN(this.number) && this.number > 0
     }
+
   },
 
   destroyed () {
@@ -148,20 +132,8 @@ export default {
 }
 </script>
 
-<style scoped>
-  /* fixed width select contains divisor */
-  select {
-    display: block !important;
-    width: 250px;
-  }
-
-  /* fixed width input contains typed number */
-  input[type=text] {
-    width: 250px;
-  }
-
-  /* form 'comptute' button */
-  a.btn {
-    width: 100px;
+<style>
+  span {
+    font-weight: bold;
   }
 </style>

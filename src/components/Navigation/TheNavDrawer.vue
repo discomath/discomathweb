@@ -25,7 +25,7 @@
 
           <h5>Solvers</h5>
           <ul v-for="st in getSubTopics" :key="st.name">
-            <li :link="st.link" @click="navigate"><router-link :to="`/applications/${st.link}`">{{ st.name }}</router-link></li>
+            <li :link="st.link" @click="navigate">{{ st.name }}</li>
           </ul>
 
         </div>
@@ -105,20 +105,12 @@ export default {
     text-align: center;
     cursor: pointer;
     transition: all .3s;
+    font-size: 1.5rem;
+    text-transform: capitalize;
   }
 
   li:hover {
     background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  /* inner <a> changes color on <li> hover as well */
-  li a {
-    font-size: 1.5rem;
-    text-transform: capitalize;
-    transition: all .3s;
-  }
-
-  li:hover a {
     color: #64b5f6;
   }
 </style>

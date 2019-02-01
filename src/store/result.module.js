@@ -32,6 +32,13 @@ const getters = {
 
 const actions = {
   /**
+   * Clears the result state
+   */
+  flushResult ({ commit }) {
+    commit('SET_RESULT', {})
+  },
+
+  /**
    * Calls the backend divisibility service with the provided payload
    *
    * @param {number} payload.divisor - divisor
@@ -39,6 +46,20 @@ const actions = {
    */
   fetchDivisibilityTest ({ commit }, payload) {
     discreteMathApplicationsApi.divisibilityTest(payload.divisor, payload.number).then(data => {
+      data.computationalSteps.map((step, i) => {
+        step.number = i + 1
+      })
+      commit('SET_RESULT', data)
+    })
+  },
+
+  /**
+   * Calls the backend prime test service with the provided payload
+   *
+   * @param {number} payload.number - number being tested
+   */
+  fetchPrimeTest ({ commit }, payload) {
+    discreteMathApplicationsApi.primeTest(payload.number).then(data => {
       data.computationalSteps.map((step, i) => {
         step.number = i + 1
       })

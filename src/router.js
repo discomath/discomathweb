@@ -20,6 +20,7 @@
  */
 import Topics from './views/Topics.vue'
 import Divisibility from './views/applications/Divisibility.vue'
+import PrimeTest from './views/applications/PrimeTest.vue'
 
 /**
  * Routed paths in a format applicable to components and Vuex store.
@@ -31,6 +32,10 @@ export const TOPICS = [
       {
         name: 'Divisibility',
         link: 'divisibility'
+      },
+      {
+        name: 'Prime Numbers',
+        link: 'prime-numbers/test'
       }
     ]
   }
@@ -54,6 +59,11 @@ export default {
       path: '/applications/divisibility',
       name: 'divisibility',
       component: Divisibility
+    },
+    {
+      path: '/applications/prime-numbers/test',
+      name: 'prime-test',
+      component: PrimeTest
     }
   ]
 }

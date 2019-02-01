@@ -18,5 +18,10 @@ export default {
   async divisibilityTest (divisor, number) {
     const res = await axios.get(`${BASE_URL}/applications/divisibility/${divisor}?number=${number}`)
     return res.data
+  },
+
+  async primeTest (number) {
+    const res = await axios.get(`${BASE_URL}/applications/prime-numbers/test?number=${number}`)
+    return res.data
   }
 }

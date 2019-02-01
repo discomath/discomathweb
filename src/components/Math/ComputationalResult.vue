@@ -20,9 +20,8 @@
 <template>
   <div class="computational-result flow-text">
     <p>
-      <span>Result: </span>
-      <code v-if="result.successMessage">{{ result.successMessage }}</code>
-      <code v-else>{{ result.result }}</code>
+      <span>Result: </span> {{ result.resultIsLogicallyTrue }}
+      <code>{{ result.message }}</code>
     </p>
   </div>
 </template>
@@ -45,5 +44,9 @@ export default {
 
   span {
     font-weight: bold;
+  }
+
+  code {
+    display: block;
   }
 </style>
