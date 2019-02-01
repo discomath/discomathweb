@@ -6,9 +6,8 @@ DiscoMath is a tool for students to interact with [topics in DIScrete and COmbin
 
 ## Contributions
 
-Contributions are encouraged, particularly from other students.
-All contributions should be made as a pull request to the `dev` branch.
-Please ensure that tests pass, including lint checks.
+Contributions are encouraged, especially from other students.
+See our [contribution guidelines](.github/CONTRIBUTING.md)
 
 ## Development
 

@@ -1,6 +1,6 @@
 # Contributing
 
-If you wish to contribute, please note that this organization follows the standard [code of conduct](https://github.com/discomath/discomathweb/blob/dev/CODE_OF_CONDUCT.md).  In short, this is a respectful place for social coding, and discrimination of any kind will not be tolerated.
+If you wish to contribute, please note that this organization follows the standard [code of conduct](./CODE_OF_CONDUCT.md).  In short, this is a respectful place for social coding, and discrimination of any kind will not be tolerated.
 
 Outside contributions and fixes are welcomed and encouraged.
 Contributions should be made as a pull request to the `dev` branch or the respective feature branch.
