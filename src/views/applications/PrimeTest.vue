@@ -48,7 +48,7 @@
       <!-- Select, Input and Error Message -->
       <div class="row">
         <div class="col s12 m6">
-          <input type="text" v-model="number" placeholder="enter a natural number" minlength="1" maxlength="10">
+          <input type="text" v-model="number" v-on:keyup.enter="computePrimeTest" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
         <div class="col s12">
           <p class="red-text lighten-1" v-if="error">Enter an number greater than 0.</p>

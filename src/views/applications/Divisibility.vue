@@ -61,7 +61,7 @@
         </div>
 
         <div class="col s12 m6">
-          <input type="text" v-model="number" placeholder="enter a natural number" minlength="1" maxlength="10">
+          <input type="text" v-model="number" v-on:keyup.enter="computeDivisionTest" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
 
         <div class="col s12">
