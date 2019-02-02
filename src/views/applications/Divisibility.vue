@@ -53,6 +53,10 @@
             <option>4</option>
             <option>5</option>
             <option>6</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>12</option>
           </select>
         </div>
 
@@ -97,7 +101,7 @@ import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
-const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6'])
+const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6', '8', '9', '10', '12'])
 
 export default {
   components: {
