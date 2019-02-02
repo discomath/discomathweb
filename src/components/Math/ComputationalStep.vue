@@ -22,7 +22,7 @@
 
     <!-- Step #: short message detailing what's happening -->
     <p class="grey-text">
-      <span class="black-text">Step {{ step }}: </span> {{ message }}
+      <span class="bold black-text">Step {{ step }}: </span> {{ message }}
     </p>
 
     <!-- Equation and/or Computation of the Step -->
@@ -55,10 +55,6 @@ export default {
 
   p {
     text-transform: capitalize;
-  }
-
-  span {
-    font-weight: bold;
   }
 
   blockquote {

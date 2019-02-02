@@ -20,12 +20,23 @@
 <template>
   <div class="card topic-card">
     <div class="card-content">
-      <span class="card-title">{{ topic }}</span>
-      <ul>
-        <li v-for="subTopic in subTopics" :key="subTopic.name">
-          <router-link :to="{ path: `applications/${subTopic.link}`}">{{ subTopic.name }}</router-link>
-        </li>
-      </ul>
+      <div class="container">
+        <div class="valign-wrapper row">
+
+          <div class="col s6">
+            <span class="card-title">{{ topic }}</span>
+          </div>
+
+          <div class="col s6 title-wrapper">
+            <ul>
+              <li v-for="st in subTopics" :key="st.name">
+                <router-link class="purple-text text-darken-3" :to="`/applications/${st.link}`">{{ st.name }}</router-link>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,5 +53,17 @@ export default {
 <style scoped>
   .card-title {
     text-transform: capitalize;
+  }
+
+  .title-wrapper {
+    border-left: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  a {
+    font-size: 1.5rem;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>

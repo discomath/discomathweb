@@ -20,7 +20,7 @@
 <template>
   <div class="computational-result flow-text">
     <p>
-      <span>Result: </span> {{ hideBoolean ? '' : result.resultIsLogicallyTrue }}
+      <span class="bold">Result: </span> {{ hideBoolean ? '' : result.resultIsLogicallyTrue }}
       <code>{{ result.message }}</code>
     </p>
   </div>
@@ -41,10 +41,6 @@ export default {
     padding: .5rem;
     margin-bottom: 1rem;
     background-color: #f3e5f5;
-  }
-
-  span {
-    font-weight: bold;
   }
 
   code {

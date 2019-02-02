@@ -37,12 +37,20 @@
     </div>
 
     <div class="container">
-
       <!-- Select, Input and Error Message -->
       <div class="row">
-        <div class="col s12 m6">
+
+        <!-- Form Input -->
+        <div class="col s8 m6">
           <input type="text" v-model="number" v-on:keyup.enter="computePrimeFactorization" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
+
+        <!-- Form Action button -->
+        <div class="col s4 center">
+          <a @click="computePrimeFactorization" class="btn pink lighten-1">Compute</a>
+        </div>
+
+        <!-- Form Error Message -->
         <div class="col s12">
           <p class="red-text lighten-1" v-if="error">Enter an number greater than 0.</p>
         </div>
@@ -61,10 +69,6 @@
           </div>
         </div>
 
-        <!-- Form Action button -->
-        <div class="center">
-          <a @click="computePrimeFactorization" class="btn pink lighten-1">Compute</a>
-        </div>
       </div>
 
     </div>

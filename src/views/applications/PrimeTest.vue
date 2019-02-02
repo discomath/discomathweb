@@ -53,14 +53,21 @@
       </p>
     </div>
 
-    <!-- Form and  Result -->
     <div class="container">
-
-      <!-- Select, Input and Error Message -->
+      <!-- Input and Error Message -->
       <div class="row">
-        <div class="col s12 m6">
+
+        <!-- Form Input -->
+        <div class="col s8 m6">
           <input type="text" v-model="number" v-on:keyup.enter="computePrimeTest" placeholder="enter a natural number" minlength="1" maxlength="10">
         </div>
+
+        <!-- Form Action button -->
+        <div class="s4 center">
+          <a @click="computePrimeTest" class="btn pink lighten-1">Compute</a>
+        </div>
+
+        <!-- Form Error Message -->
         <div class="col s12">
           <p class="red-text lighten-1" v-if="error">Enter an number greater than 0.</p>
         </div>
@@ -69,23 +76,21 @@
       <!-- Computation & Result -->
       <div class="row">
 
-        <!-- Only show computation if result is present in store -->
+        <!-- Computation Steps (only shown if result is present) -->
         <div v-if="getResult.result">
           <div class="col s12" v-for="step in getResult.computationalSteps" :key="step.number">
             <ComputationalStep :message="step.message" :equation="step.equation" :step="step.number" />
           </div>
+
+          <!-- Result -->
           <div class="col s12">
             <ComputationalResult :result="getResult.result" />
           </div>
         </div>
 
-        <!-- Form Action button -->
-        <div class="center">
-          <a @click="computePrimeTest" class="btn pink lighten-1">Compute</a>
-        </div>
       </div>
 
-    </div>
+    </div><!-- end .container -->
 
   </Section>
 </template>
@@ -149,9 +154,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  span {
-    font-weight: bold;
-  }
-</style>

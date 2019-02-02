@@ -168,9 +168,4 @@ export default {
   input[type=text] {
     width: 250px;
   }
-
-  /* form 'comptute' button */
-  a.btn {
-    width: 100px;
-  }
 </style>

@@ -33,8 +33,8 @@
 
     <!-- Topics Content -->
     <div class="row">
-      <div class="col s12 m6" v-for="topic in getTopics" :key="topic.name">
-        <TopicCard :topic="topic.name" :subTopics="topic.applications" />
+      <div class="col s12" v-for="topic in getTopics" :key="topic.name">
+        <TopicCard class="purple lighten-3 white-text" :topic="topic.name" :subTopics="topic.applications" />
       </div>
     </div>
 

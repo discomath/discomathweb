@@ -65,7 +65,7 @@
     <!-- darkened strip at very bottom -->
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2019 <a href="https://github.com/discomath" title="Vapurrmaid on Github">DiscoMath</a> &nbsp;
+        &copy; 2019 <a href="https://github.com/discomath" title="Vapurrmaid on Github">DiscoMath</a>
         <span class="right">
           Created By: <a href="https://github.com/vapurrmaid">
             <span>vapurrmaid</span>
@@ -78,6 +78,7 @@
 </template>
 
 <style scoped>
+  /* Adds spacing, font style to links on right side */
   ul.footer__links {
     font-weight: 300;
   }
