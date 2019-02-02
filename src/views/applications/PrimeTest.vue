@@ -38,7 +38,10 @@
       <h4>Prime Test</h4>
       <p class="flow-text">
         The following tool demonstrates a test for primeness.
-        In order to determine primeness, all natural numbers from 2 to the rounded square root of the number being tested are considered.
+        In order to determine primeness, all odd integers from 3 to the rounded square root of the number being tested are considered.
+      </p>
+      <p class="flow-text">
+        2 is the only even prime number.
       </p>
     </div>
 
