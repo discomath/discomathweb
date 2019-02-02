@@ -19,6 +19,12 @@
  */
 import discreteMathApplicationsApi from '@/services/discomath-api'
 
+function addStepsNumbersToResult (result) {
+  result.computationalSteps.map((step, i) => {
+    step.number = i + 1
+  })
+}
+
 const state = {
   result: {}
 }
@@ -46,9 +52,7 @@ const actions = {
    */
   fetchDivisibilityTest ({ commit }, payload) {
     discreteMathApplicationsApi.divisibilityTest(payload.divisor, payload.number).then(data => {
-      data.computationalSteps.map((step, i) => {
-        step.number = i + 1
-      })
+      addStepsNumbersToResult(data)
       commit('SET_RESULT', data)
     })
   },
@@ -60,9 +64,7 @@ const actions = {
    */
   fetchPrimeTest ({ commit }, payload) {
     discreteMathApplicationsApi.primeTest(payload.number).then(data => {
-      data.computationalSteps.map((step, i) => {
-        step.number = i + 1
-      })
+      addStepsNumbersToResult(data)
       commit('SET_RESULT', data)
     })
   },
@@ -74,10 +76,7 @@ const actions = {
    */
   fetchPrimeFactorization ({ commit }, payload) {
     discreteMathApplicationsApi.primeFactorization(payload.number).then(data => {
-      data.computationalSteps.map((step, i) => {
-        step.number = i + 1
-      })
-      data.result.message = data.result.message.replace(/,/g, '\u22C5')
+      addStepsNumbersToResult(data)
       commit('SET_RESULT', data)
     })
   }

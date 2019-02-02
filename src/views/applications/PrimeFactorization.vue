@@ -74,11 +74,16 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+
+// components
 import ComputationalResult from '@/components/Math/ComputationalResult'
 import ComputationalStep from '@/components/Math/ComputationalStep'
 import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
+
+// utils
+import validators from '@/utils/validation'
 
 export default {
   components: {
@@ -111,12 +116,12 @@ export default {
     },
 
     numberIsValid () {
-      return !isNaN(this.number) && this.number > 0
-    },
-
-    destroyed () {
-      this.flushResult()
+      return validators.isStringNaturalNumber(this.number)
     }
+  },
+
+  destroyed () {
+    this.flushResult()
   }
 }
 </script>

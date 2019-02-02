@@ -33,6 +33,14 @@
       </MathDefinition>
     </SectionIntro>
 
+    <!-- Remark -->
+    <MathRemark>
+      <p>
+        The number <code>1</code> is neither prime nor composite.
+        See <a title="Stack Exchange Why is 1 Not Prime?" href="https://math.stackexchange.com/questions/120/why-is-1-not-a-prime-number">this</a> answer on Math Stack Exchange.
+      </p>
+    </MathRemark>
+
     <!-- Introduces The Tool -->
     <div>
       <h4>Prime Test</h4>
@@ -84,17 +92,24 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+
+// components
 import ComputationalResult from '@/components/Math/ComputationalResult'
 import ComputationalStep from '@/components/Math/ComputationalStep'
 import MathDefinition from '@/components/Math/MathDefinition'
+import MathRemark from '@/components/Math/MathRemark'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
+
+// utils
+import validators from '@/utils/validation'
 
 export default {
   components: {
     ComputationalResult,
     ComputationalStep,
     MathDefinition,
+    MathRemark,
     Section,
     SectionIntro
   },
@@ -124,7 +139,7 @@ export default {
     },
 
     numberIsValid: function () {
-      return !isNaN(this.number) && this.number > 0
+      return validators.isStringNaturalNumber(this.number)
     }
 
   },

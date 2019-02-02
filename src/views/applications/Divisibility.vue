@@ -95,11 +95,16 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+
+// components
 import ComputationalResult from '@/components/Math/ComputationalResult'
 import ComputationalStep from '@/components/Math/ComputationalStep'
 import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
+
+// utils
+import validators from '@/utils/validation'
 
 const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6', '8', '9', '10', '12'])
 
@@ -142,7 +147,7 @@ export default {
     },
 
     numberIsValid: function () {
-      return !isNaN(this.number) && this.number > 0
+      return validators.isStringNaturalNumber(this.number)
     }
   },
 
