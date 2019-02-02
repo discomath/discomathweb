@@ -23,5 +23,10 @@ export default {
   async primeTest (number) {
     const res = await axios.get(`${BASE_URL}/applications/prime-numbers/test?number=${number}`)
     return res.data
+  },
+
+  async primeFactorization (number) {
+    const res = await axios.get(`${BASE_URL}/applications/prime-numbers/factors?number=${number}`)
+    return res.data
   }
 }

@@ -65,6 +65,21 @@ const actions = {
       })
       commit('SET_RESULT', data)
     })
+  },
+
+  /**
+   * Calls the backend prime factorization service with the provided payload
+   *
+   * @param {number} payload.number - number being factored
+   */
+  fetchPrimeFactorization ({ commit }, payload) {
+    discreteMathApplicationsApi.primeFactorization(payload.number).then(data => {
+      data.computationalSteps.map((step, i) => {
+        step.number = i + 1
+      })
+      data.result.message = data.result.message.replace(/,/g, '\u22C5')
+      commit('SET_RESULT', data)
+    })
   }
 }
 

@@ -20,7 +20,7 @@
 <template>
   <div class="computational-result flow-text">
     <p>
-      <span>Result: </span> {{ result.resultIsLogicallyTrue }}
+      <span>Result: </span> {{ hideBoolean ? '' : result.resultIsLogicallyTrue }}
       <code>{{ result.message }}</code>
     </p>
   </div>
@@ -29,7 +29,8 @@
 <script>
 export default {
   props: {
-    result: Object
+    result: Object,
+    hideBoolean: Boolean
   }
 }
 </script>

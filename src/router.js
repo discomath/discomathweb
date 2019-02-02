@@ -20,6 +20,7 @@
  */
 import Topics from './views/Topics.vue'
 import Divisibility from './views/applications/Divisibility.vue'
+import PrimeFactorization from './views/applications/PrimeFactorization.vue'
 import PrimeTest from './views/applications/PrimeTest.vue'
 
 /**
@@ -36,6 +37,10 @@ export const TOPICS = [
       {
         name: 'Prime Numbers',
         link: 'prime-numbers/test'
+      },
+      {
+        name: 'Prime Factorization',
+        link: 'prime-numbers/factors'
       }
     ]
   }
@@ -59,6 +64,11 @@ export default {
       path: '/applications/divisibility',
       name: 'divisibility',
       component: Divisibility
+    },
+    {
+      path: '/applications/prime-numbers/factors',
+      name: 'prime-factors',
+      component: PrimeFactorization
     },
     {
       path: '/applications/prime-numbers/test',
