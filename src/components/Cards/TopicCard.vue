@@ -59,8 +59,20 @@ export default {
     border-left: 1px solid rgba(0, 0, 0, .1);
   }
 
-  a {
-    font-size: 1.5rem;
+  @media screen and (min-width: 601px) {
+    a {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    div.container {
+      width: 100%;
+    }
+  }
+
+  li:not(last-child) {
+    margin-bottom: 7px;
   }
 
   a:hover {

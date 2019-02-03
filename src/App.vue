@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+  #app {
+    min-width: 320px;
+  }
+
   #mainContent {
     min-height: 80vh;
   }
