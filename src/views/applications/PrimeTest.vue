@@ -63,7 +63,7 @@
         </div>
 
         <!-- Form Action button -->
-        <div class="s4 center">
+        <div class="col s4 center">
           <a @click="computePrimeTest" class="btn pink lighten-1">Compute</a>
         </div>
 
