@@ -37,7 +37,7 @@
     <MathRemark>
       <p>
         The number <code>1</code> is neither prime nor composite.
-        See <a title="Stack Exchange Why is 1 Not Prime?" href="https://math.stackexchange.com/questions/120/why-is-1-not-a-prime-number">this</a> answer on Math Stack Exchange.
+        See <a title="Stack Exchange Why is 1 Not Prime?" href="https://math.stackexchange.com/questions/120/why-is-1-not-a-prime-number">this question</a> on Math Stack Exchange.
       </p>
     </MathRemark>
 
@@ -59,7 +59,7 @@
 
         <!-- Form Input -->
         <div class="col s8 m6">
-          <input type="text" v-model="number" v-on:keyup.enter="computePrimeTest" placeholder="enter a natural number" minlength="1" maxlength="10">
+          <input type="text" v-model="number" v-on:keyup.enter="computePrimeTest" :placeholder="placeholder" minlength="1" maxlength="10">
         </div>
 
         <!-- Form Action button -->
@@ -106,6 +106,9 @@ import MathRemark from '@/components/Math/MathRemark'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
+// strings
+import { NATURAL_NUMBER_PLACEHOLDER } from '@/strings/'
+
 // utils
 import validators from '@/utils/validation'
 
@@ -121,6 +124,7 @@ export default {
 
   data () {
     return {
+      placeholder: NATURAL_NUMBER_PLACEHOLDER,
       number: '',
       error: null
     }

@@ -42,7 +42,7 @@
 
         <!-- Form Input -->
         <div class="col s8 m6">
-          <input type="text" v-model="number" v-on:keyup.enter="computePrimeFactorization" placeholder="enter a natural number" minlength="1" maxlength="10">
+          <input type="text" v-model="number" v-on:keyup.enter="computePrimeFactorization" :placeholder="placeholder" minlength="1" maxlength="10">
         </div>
 
         <!-- Form Action button -->
@@ -86,6 +86,9 @@ import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
+// strings
+import { NATURAL_NUMBER_PLACEHOLDER } from '@/strings/'
+
 // utils
 import validators from '@/utils/validation'
 
@@ -100,6 +103,7 @@ export default {
 
   data () {
     return {
+      placeholder: NATURAL_NUMBER_PLACEHOLDER,
       number: '',
       error: null
     }
