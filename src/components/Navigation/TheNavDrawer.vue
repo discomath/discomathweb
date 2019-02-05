@@ -19,8 +19,10 @@
  -->
 <template>
   <transition name="slide-fade">
-    <div @click="toggleDrawer" id="navDrawer">
-      <div id="navDrawerContent" class="grey lighten-4">
+    <div id="navDrawer">
+
+      <!-- Drawer -->
+      <div id="navDrawerContent" class="white">
         <div>
 
           <h5>Solvers</h5>
@@ -30,6 +32,10 @@
 
         </div>
       </div>
+
+      <!-- Overlay -->
+      <div id="navDrawerOverlay" @click="toggleDrawer"></div>
+
     </div>
   </transition>
 </template>
@@ -47,6 +53,7 @@ export default {
      */
     navigate (e) {
       this.$router.push(`/applications/${e.target.attributes['link'].value}`)
+      this.toggleDrawer()
     }
   },
 
@@ -65,7 +72,7 @@ export default {
     opacity: 0;
   }
 
-  /* defines the screen-wide overlay */
+  /* contains both the drawer and the overlay (entire screen) */
   #navDrawer {
     min-height: 100%;
     min-width: 100%;
@@ -76,11 +83,9 @@ export default {
     right: 0;
     bottom: 0;
     z-index: 999;
-
-    background-color: rgba(0, 0, 0, 0.1);
   }
 
-  /* defines the menu portion situated on top of the overlay */
+  /* just the drawer portion, not the overlay */
   #navDrawerContent {
     min-height: 100%;
     width: 300px;
@@ -103,14 +108,27 @@ export default {
   li {
     padding: 1rem;
     text-align: center;
+
     cursor: pointer;
-    transition: all .3s;
     font-size: 1.5rem;
     text-transform: capitalize;
+    transition: all .3s;
   }
 
   li:hover {
     background-color: rgba(0, 0, 0, 0.1);
     color: #64b5f6;
+  }
+
+  /* just the overlay (translucent backdrop over underlaying view) */
+  #navDrawerOverlay {
+    min-height: 100%;
+    width: 100%;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 997; /* LESS than #navDrawerContent */;
   }
 </style>
