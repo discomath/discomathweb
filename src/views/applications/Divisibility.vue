@@ -61,7 +61,7 @@
         </div>
 
         <div class="col s12 m6">
-          <input type="text" v-model="number" v-on:keyup.enter="computeDivisionTest" placeholder="enter a natural number" minlength="1" maxlength="10">
+          <input type="text" v-model="number" v-on:keyup.enter="computeDivisionTest" :placeholder="placholder" minlength="1" maxlength="10">
         </div>
 
         <div class="col s12">
@@ -103,9 +103,15 @@ import MathDefinition from '@/components/Math/MathDefinition'
 import Section from '@/components/Layout/Section'
 import SectionIntro from '@/components/Layout/SectionIntro'
 
+// strings
+import { NATURAL_NUMBER_PLACEHOLDER } from '@/strings/'
+
 // utils
 import validators from '@/utils/validation'
 
+/**
+ * defines valid divisors, in case user tries to bypass the <select> options
+ */
 const VALID_DIVISORS = new Set(['2', '3', '4', '5', '6', '8', '9', '10', '12'])
 
 export default {
@@ -119,6 +125,7 @@ export default {
 
   data () {
     return {
+      placholder: NATURAL_NUMBER_PLACEHOLDER,
       divisor: '', // bound to the <select>
       number: '', // bound to the <input>
       error: null // whether or not to display an error message
