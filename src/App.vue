@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Navbar from '@/components/Navigation/TheNavbar'
 import NavDrawer from '@/components/Navigation/TheNavDrawer'
 import FooterContent from '@/components/TheFooterContent'
@@ -51,7 +51,11 @@ const BODY = document.getElementsByTagName('body')[0]
 
 export default {
   components: { FooterContent, Navbar, NavDrawer },
+
   computed: mapGetters('navigationModule', ['drawerIsOpen']),
+
+  methods: mapActions('managementModule', ['fetchHealthCheck']),
+
   watch: {
     drawerIsOpen: function () {
       if (this.drawerIsOpen) {
@@ -60,6 +64,10 @@ export default {
         BODY.classList.remove('no-scroll')
       }
     }
+  },
+
+  beforeMount () {
+    this.fetchHealthCheck()
   }
 }
 </script>

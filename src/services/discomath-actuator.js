@@ -1,5 +1,5 @@
 /**
- * Exports configuration for Vue Router
+ * Interface for DiscoMath actuator.
  *
  * discomathweb is a web service for studying topics in discrete math.
  * Copyright (C) 2019  discomath
@@ -17,22 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
  */
-import managementModule from './management.module'
-import navigationModule from './navigation.module'
-import resultModule from './result.module'
-import topicsModule from './topics.module'
-
-const debug = process.env.NODE_ENV !== 'production'
+import axios from 'axios'
 
 /**
- * Configuration for Vue Router
+ * URL to the backend or a locally running instance
  */
+const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://dmapplications.herokuapp.com/actuator' : 'http://localhost:8080/actuator'
+
 export default {
-  modules: {
-    managementModule,
-    navigationModule,
-    resultModule,
-    topicsModule
-  },
-  strict: debug
+  /**
+   * Queries the actuator health service.
+   */
+  async healthCheck () {
+    const res = await axios.get(`${BASE_URL}/health`)
+    return res.data
+  }
 }

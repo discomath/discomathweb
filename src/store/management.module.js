@@ -1,5 +1,5 @@
 /**
- * Exports configuration for Vue Router
+ * Vuex Store module dealing with application health management.
  *
  * discomathweb is a web service for studying topics in discrete math.
  * Copyright (C) 2019  discomath
@@ -17,22 +17,44 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://github.com/discomath/discomathweb/blob/dev/LICENSE>.
  */
-import managementModule from './management.module'
-import navigationModule from './navigation.module'
-import resultModule from './result.module'
-import topicsModule from './topics.module'
+import discoMathActuator from '@/services/discomath-actuator'
 
-const debug = process.env.NODE_ENV !== 'production'
+const state = {
+  isUp: false
+}
 
-/**
- * Configuration for Vue Router
- */
+const getters = {
+  /**
+   * @returns {boolean} True if the backend service is healthy
+   */
+  backendIsUp: state => state.isUp
+}
+
+const actions = {
+  /**
+   * fetches the health check from the backend
+   */
+  fetchHealthCheck ({ commit }) {
+    discoMathActuator.healthCheck().then(data => {
+      if (data.status === 'UP') {
+        commit('SET_HEALTH_STATUS', true)
+      } else {
+        commit('SET_HEALTH_STATUS', false)
+      }
+    })
+  }
+}
+
+const mutations = {
+  SET_HEALTH_STATUS: (state, payload) => {
+    state.isUp = payload
+  }
+}
+
 export default {
-  modules: {
-    managementModule,
-    navigationModule,
-    resultModule,
-    topicsModule
-  },
-  strict: debug
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
 }
