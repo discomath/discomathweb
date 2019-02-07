@@ -32,5 +32,6 @@
   blockquote {
     border-color: #e91e63;
     background-color: #fce4ec;
+    padding: 1rem;
   }
 </style>
