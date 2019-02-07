@@ -170,4 +170,11 @@ export default {
   a.btn {
     margin: 0 .5rem !important;
   }
+
+  @media screen and (max-width: 347px) {
+    a.btn {
+      display: block;
+      margin: .5rem 0 !important;
+    }
+  }
 </style>
