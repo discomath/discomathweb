@@ -57,5 +57,21 @@ export default {
   async primeFactorization (number) {
     const res = await axios.get(`${BASE_URL}/applications/prime-numbers/factors?number=${number}`)
     return res.data
+  },
+
+  /**
+   * Queries the backend gcf service
+   *
+   * @param {Array} numbers - the numbers being commonly factored
+   */
+  async gcf (numbers) {
+    let query = `?n1=${numbers.shift()}&n2=${numbers.shift()}`
+    if (numbers.length) {
+      numbers.forEach(number => { query += `&n=${number}` })
+    } else {
+      query += '&n='
+    }
+    const res = await axios.get(`${BASE_URL}/applications/prime-numbers/gcf${query}`)
+    return res.data
   }
 }

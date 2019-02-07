@@ -79,6 +79,18 @@ const actions = {
       addStepsNumbersToResult(data)
       commit('SET_RESULT', data)
     })
+  },
+
+  /**
+   * Calls the backend gcf service with provided payload
+   *
+   * @param {array} payload - array of numbers, length 2-10
+   */
+  fetchGCF ({ commit }, payload) {
+    discreteMathApplicationsApi.gcf(payload).then(data => {
+      addStepsNumbersToResult(data)
+      commit('SET_RESULT', data)
+    })
   }
 }
 

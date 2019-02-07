@@ -24,5 +24,17 @@ export default {
    *
    * @param {string} str - String to test
    */
-  isStringNaturalNumber: str => !isNaN(str) && str > 0
+  isStringNaturalNumber: str => !isNaN(str) && str > 0,
+
+  /**
+   * Tests an array input to see if each is a natural number, greater than the provided limit.
+   *
+   * @param {array} numbers
+   * @param {number} lower limit - every number in the array must be greater than this number
+   */
+  isNumbersArrayValid: (numbers, limit) => {
+    let valid = true
+    numbers.forEach(number => { valid = !isNaN(number) && number > limit })
+    return valid
+  }
 }

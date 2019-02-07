@@ -20,6 +20,7 @@
  */
 import Topics from './views/Topics.vue'
 import Divisibility from './views/applications/Divisibility.vue'
+import GCF from './views/applications/GCF.vue'
 import PrimeFactorization from './views/applications/PrimeFactorization.vue'
 import PrimeTest from './views/applications/PrimeTest.vue'
 
@@ -33,6 +34,10 @@ export const TOPICS = [
       {
         name: 'Divisibility',
         link: 'divisibility'
+      },
+      {
+        name: 'Greatest Common Factor',
+        link: 'gcf'
       },
       {
         name: 'Prime Numbers',
@@ -64,6 +69,11 @@ export default {
       path: '/applications/divisibility',
       name: 'divisibility',
       component: Divisibility
+    },
+    {
+      path: '/applications/gcf',
+      name: 'gcf',
+      component: GCF
     },
     {
       path: '/applications/prime-numbers/factors',
