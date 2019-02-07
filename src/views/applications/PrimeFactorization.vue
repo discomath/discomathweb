@@ -37,7 +37,7 @@
     </div>
 
     <div class="container">
-      <!-- Select, Input and Error Message -->
+      <!-- Input and Error Message -->
       <div class="row">
 
         <!-- Form Input -->
