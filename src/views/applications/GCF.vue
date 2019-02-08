@@ -21,7 +21,7 @@
   <Section elementId="greatestCommonFactor">
 
     <!-- Title and Introduction -->
-    <SectionIntro title="Prime Factorization">
+    <SectionIntro title="Greatest Common Factor">
       <MathDefinition>
         Given a group of Natural Numbers, the <span class="bold">greatest common factor</span> is the largest number that is factor of <span class="bold">all</span> of them.
       </MathDefinition>
@@ -62,9 +62,13 @@
 
         <!-- Form Action button -->
         <div class="col s12 center">
-          <a @click="addNumber" :class="numberOfInputs < 10 ? '' : 'disabled'" class="btn green darken-1">+</a>
+          <a @click="addNumber" :class="numberOfInputs < 10 ? '' : 'disabled'" class="btn green darken-1">
+            <i class="material-icons">add</i>
+          </a>
           <a @click="computeGCF" class="btn pink lighten-1">Compute</a>
-          <a @click="removeNumber" :class="numberOfInputs > 2 ? '' : 'disabled'" class="btn red darken-1">-</a>
+          <a @click="removeNumber" :class="numberOfInputs > 2 ? '' : 'disabled'" class="btn red darken-1">
+            <i class="material-icons">remove</i>
+          </a>
         </div>
 
         <!-- Form Error Message -->
