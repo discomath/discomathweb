@@ -26,7 +26,7 @@ The following will run the `lint` service with the `--fix` switch, as well as un
 npm run test
 ```
 ## Acknowledgements
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard) [![Greenkeeper badge](https://badges.greenkeeper.io/discomath/discomathweb.svg)](https://greenkeeper.io/)
 <a href="http://materializecss.com/">
   <img src="http://materializecss.com/res/materialize.svg" width="150">
 </a>
