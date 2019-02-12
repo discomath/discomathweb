@@ -36,20 +36,28 @@
     <!-- Remark -->
     <MathRemark>
       <p>
-        The number <code>1</code> is neither prime nor composite.
+        <code>1</code> is neither prime nor composite.
         See <a title="Stack Exchange Why is 1 Not Prime?" href="https://math.stackexchange.com/questions/120/why-is-1-not-a-prime-number">this question</a> on Math Stack Exchange.
+      </p>
+      <p>
+        <code>2</code> is the only even prime, as its factors are <code>1</code> and itself.
+        All other even numbers have <code>2</code> as a factor and therefore cannot be prime.
       </p>
     </MathRemark>
 
     <!-- Introduces The Tool -->
     <div>
       <h4>Prime Test</h4>
+
       <p class="flow-text">
-        The following tool demonstrates a test for primeness.
-        In order to determine primeness, all odd integers from 3 to the rounded square root of the number being tested are considered.
-      </p>
-      <p class="flow-text">
-        2 is the only even prime number.
+        The following tool demonstrates a test for primeness using the following algorithm:
+        <ol>
+          <li>Is the number 1? It is neither prime nor composite.</li>
+          <li>Is the number 2? 2 is prime.</li>
+          <li>Take the square root of the number and round it.</li>
+          <li>Test all odd integers from 3 to the rounded square root.</li>
+          <li>If none of these integers divide the number, then it is prime.</li>
+        </ol>
       </p>
     </div>
 
