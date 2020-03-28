@@ -37,6 +37,7 @@
     "markdownlint-cli": "^0.22.0",
     "prettier": "^2.0.2",
     "react-scripts": "3.4.1",
+    "release-it": "^13.5.0",
     "typescript": "~3.7.2"
   },
   "browserslist": {
