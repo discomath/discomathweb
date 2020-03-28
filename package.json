@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
+    "format": "prettier --write src/**/*",
     "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
     "start": "react-scripts start"
   },
