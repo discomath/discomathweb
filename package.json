@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:md": "markdownlint --ignore \"**/node_modules/**\" ."
+    "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
+    "start": "react-scripts start"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -51,6 +51,7 @@
     }
   },
   "lint-staged": {
+    "*.md": "yarn lint:md",
     "*.{css,json,html,md,ts,tsx,yaml,yml}": "prettier --write"
   }
 }
